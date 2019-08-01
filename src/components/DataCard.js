@@ -3,7 +3,7 @@ import React from "react";
 const DataCard = props => {
   return (
     <div>
-      <img src={props.stuff.url} alt="planetary" />
+      <img src={props.url} alt="planetary" />
     </div>
   );
 };
