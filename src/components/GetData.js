@@ -7,14 +7,14 @@ import Explanation from "./Explanation";
 const GetData = () => {
   const [apod, setApod] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  // const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     setIsLoading(true);
     // setApod([]);
     axios
       .get(
-        `https://api.nasa.gov/planetary/apod?api_key=rE0IpA77McoBIlSqNgE7wRQS3nPpCBVH7MKuId67&date=2019-07-30`
+        `https://api.nasa.gov/planetary/apod?api_key=rE0IpA77McoBIlSqNgE7wRQS3nPpCBVH7MKuId67&date=${date}`
       )
       .then(res => {
         console.log(res);
@@ -22,10 +22,18 @@ const GetData = () => {
         setIsLoading(false);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [date]);
 
   return (
     <div>
+      <h3>input another date for a new picture</h3>
+      <p>Be sure to us the following format yyyy-mm-dd</p>
+      <input
+        type="text"
+        placeholder="yyyy-mm-dd"
+        onChange={e => setDate(e.target.value)}
+      />
+
       {isLoading && <h2>loading image...</h2>}
       <Title apod={apod} />
       <Photo apod={apod} />
