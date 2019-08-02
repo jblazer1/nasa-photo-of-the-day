@@ -7,6 +7,10 @@ import GetData from "./components/GetData.js";
 import styled from "styled-components";
 
 const MainWrapper = styled.div`
+  background-color: #5d90e3;
+`;
+
+const ContentWrapper = styled.div`
   text-align: center;
   width: 960px;
   margin: 0 auto;
@@ -15,8 +19,10 @@ const MainWrapper = styled.div`
 function App() {
   return (
     <MainWrapper>
-      <Heading />
-      <GetData />
+      <ContentWrapper>
+        <Heading />
+        <GetData />
+      </ContentWrapper>
     </MainWrapper>
   );
 }
