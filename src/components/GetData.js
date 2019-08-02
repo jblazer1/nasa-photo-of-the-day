@@ -4,10 +4,17 @@ import Photo from "./Photo";
 import Title from "./Title";
 import Explanation from "./Explanation";
 
+let today = new Date();
+let dd = String(today.getDate()).padStart(2, "0");
+let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+let yyyy = today.getFullYear();
+
+today = yyyy + "-" + mm + "-" + dd;
+
 const GetData = () => {
   const [apod, setApod] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(today);
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,6 +38,7 @@ const GetData = () => {
       <input
         type="text"
         placeholder="yyyy-mm-dd"
+        value={date}
         onChange={e => setDate(e.target.value)}
       />
 
